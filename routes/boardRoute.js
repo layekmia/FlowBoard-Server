@@ -10,6 +10,6 @@ const router = express.Router();
 
 router.post("/board", createBoard); // Create a new board
 router.delete("/boards/:id", deleteBoard); // Delete a board
-
+router.patch("/boards/add-task/:id", addBoardTask); // Add task to a board
 
 module.exports = router;
