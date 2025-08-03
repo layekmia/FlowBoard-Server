@@ -21,8 +21,7 @@ const createBoard = async (req, res) => {
 const getBoard = async (req, res) => {
   const email = req.query.email;
   try {
-    const boards = await Board.find({userEmail: email});
-    if (!boards) return res.status(404).json({ message: "board not found" });
+    const boards = await Board.find({ userEmail: email });
     res.status(200).json(boards);
   } catch (error) {
     res
@@ -30,6 +29,7 @@ const getBoard = async (req, res) => {
       .json({ message: "internal server error", error: error.message });
   }
 };
+
 
 const deleteBoard = async (req, res) => {
   const { id } = req.params;

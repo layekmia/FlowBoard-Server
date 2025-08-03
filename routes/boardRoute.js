@@ -15,6 +15,6 @@ router.get("/boards", getBoard); // getBoard  boards
 router.delete("/boards/:id", deleteBoard); // Delete a board
 router.patch("/boards/add-task/:boardId", addBoardTask); // Add task to a board
 router.patch("/boards/:boardId/tasks/:taskId/status", updateTaskStatus); // Update task status
-router.delete("/boards/:boardId/tasks/:taskId", deleteBoardTask); // Update task status
+router.delete("/boards/:boardId/tasks/:taskId", deleteBoardTask); // delete board task
 
 module.exports = router;
