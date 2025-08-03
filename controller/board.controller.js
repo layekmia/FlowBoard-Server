@@ -18,6 +18,19 @@ const createBoard = async (req, res) => {
   }
 };
 
+const getBoard = async (req, res) => {
+  const email = req.query.email;
+  try {
+    const boards = await Board.find({userEmail: email});
+    if (!boards) return res.status(404).json({ message: "board not found" });
+    res.status(200).json(boards);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "internal server error", error: error.message });
+  }
+};
+
 const deleteBoard = async (req, res) => {
   const { id } = req.params;
 
@@ -130,4 +143,5 @@ module.exports = {
   addBoardTask,
   updateTaskStatus,
   deleteBoardTask,
+  getBoard,
 };
