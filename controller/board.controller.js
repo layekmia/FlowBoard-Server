@@ -27,9 +27,21 @@ const getBoard = async (req, res) => {
     res
       .status(500)
       .json({ message: "internal server error", error: error.message });
+    console.log(error);
   }
 };
-
+const getBoardById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const board = await Board.findById(id);
+    res.status(200).json(board);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "internal server error", error: error.message });
+    console.log(error);
+  }
+};
 
 const deleteBoard = async (req, res) => {
   const { id } = req.params;
@@ -144,4 +156,5 @@ module.exports = {
   updateTaskStatus,
   deleteBoardTask,
   getBoard,
+  getBoardById,
 };
