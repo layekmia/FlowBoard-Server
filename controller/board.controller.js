@@ -98,4 +98,36 @@ const updateTaskStatus = async (req, res) => {
   }
 };
 
-module.exports = { createBoard, deleteBoard, addBoardTask, updateTaskStatus };
+const deleteBoardTask = async (req, res) => {
+  const { boardId, taskId } = req.params;
+
+  try {
+    const updatedBoard = await Board.findByIdAndUpdate(
+      boardId,
+      { $pull: { tasks: { _id: taskId } } }, // remove task by its _id
+      { new: true }
+    );
+
+    if (!updatedBoard) {
+      return res.status(404).json({ message: "Board or Task not found" });
+    }
+
+    res.status(200).json({
+      message: "Task deleted successfully",
+      board: updatedBoard,
+    });
+  } catch (error) {
+    console.error("Error deleting task:", error);
+    res
+      .status(500)
+      .json({ message: "Internal server error", error: error.message });
+  }
+};
+
+module.exports = {
+  createBoard,
+  deleteBoard,
+  addBoardTask,
+  updateTaskStatus,
+  deleteBoardTask,
+};
