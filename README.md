@@ -18,6 +18,7 @@ The backend is built with **Node.js**, **Express**, and **MongoDB (Mongoose)**.
 - Delete tasks from a board.
 - Persist data using MongoDB.
 - RESTful API ready for frontend integration.
+- Optimistic UI updates (instant UI changes before backend confirmation)
 
 ---
 
