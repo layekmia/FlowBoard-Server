@@ -8,7 +8,6 @@ Just copy and paste this:
 This is the **backend service** for the Kanban Task Management application.  
 It provides a RESTful API to manage boards and tasks, including adding boards, creating tasks, updating task status, and deleting tasks.  
 The backend is built with **Node.js**, **Express**, and **MongoDB (Mongoose)**.
-
 ---
 
 ## 🚀 Features
